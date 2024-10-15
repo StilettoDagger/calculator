@@ -92,6 +92,7 @@ body {
     height: 30px;
     gap: 1px;
     margin: 0 1em;
+    position: relative;
 }
 
 .pixel {
@@ -102,4 +103,11 @@ body {
 
 .cursor.off {
     visibility: hidden;
+}
+
+.query {
+    font-size: 3rem;
+    font-weight: bold;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
