@@ -30,6 +30,8 @@ html, body {
 
 .calc-screen {
     background-color: lightgreen;
+    display: flex;
+    align-items: center;
     height: 20%;
     width: 90%;
     margin-top: 3em;
@@ -75,3 +77,22 @@ html, body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.509);
 }
 
+.cursor {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    width: 15px;
+    height: 30px;
+    gap: 1px;
+    margin: 0 1em;
+}
+
+.pixel {
+    height: 10px;
+    width: 5px;
+    background-color: black;
+}
+
+.cursor.off {
+    visibility: hidden;
+}
