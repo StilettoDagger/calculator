@@ -14,3 +14,8 @@ const calculator = {
         return a / b;
     },
 }
+
+const appContainer = document.querySelector("#calculator-app");
+
+const cursor = document.querySelector(".cursor");
+
