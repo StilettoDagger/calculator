@@ -39,10 +39,10 @@ const calculator = {
 		let pattern;
 		switch (type) {
 			case "multDiv":
-				pattern = /(\-?\d+\.?\d*)([\*\/])(\-?\d+\.?\d*)/;
+				pattern = /(\-?\d*\.?\d*)([\*\/])(\-?\d*\.?\d*)/;
 				break;
 			case "addSub":
-				pattern = /(\-?\d+\.?\d*)([\+\-])(\-?\d+\.?\d*)/;
+				pattern = /(\-?\d*\.?\d*)([\+\-])(\-?\d*\.?\d*)/;
 				break;
 			default:
 				return;
