@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-
 * {
     margin: 0;
     padding: 0;
@@ -147,4 +145,14 @@ button.clicked {
     overflow: hidden;
     text-overflow: ellipsis;
     font-weight: bold;
+}
+
+@media (max-width: 600px) {
+    #calculator-app {
+        transform: scale(0.8);
+    }
+
+    html {
+        font-size: 12px;
+    }
 }
