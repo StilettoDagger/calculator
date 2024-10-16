@@ -92,13 +92,13 @@ const cursor = {
 	},
 };
 
-window.addEventListener("keydown", (e) => {
-	const queryInput = document.querySelector(".query");
+function handleKeyPress(e) {
+    const queryInput = document.querySelector(".query");
 
 	const regex = /^[0-9\+\-\*\/\.]$/;
 
-	const keyPressed = e.key;
-
+	const keyPressed = e.type === "keydown" ? e.key : e.target.value;
+    
     // Disable overrides for F keys.
 	if (!/^F[0-9]+$/.test(keyPressed)) {
 		e.preventDefault();
@@ -141,7 +141,17 @@ window.addEventListener("keydown", (e) => {
 		queryInput.textContent += keyPressed;
 		console.table(calculator);
 	}
-});
+}
+
+window.addEventListener("keydown", handleKeyPress);
+
+// Add event listeners to all buttons
+
+const buttons = document.querySelectorAll("button");
+
+for (const button of buttons) {
+    button.addEventListener("click", handleKeyPress)
+}
 
 cursor.drawCursor();
 
