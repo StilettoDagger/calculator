@@ -10,6 +10,7 @@ html, body {
 
 body {
     font-family: 'Courier New', Courier, monospace;
+    background-color: #eee
 }
 
 #calculator-app, body, .calc-body {
@@ -51,6 +52,22 @@ body {
     flex: 25%;
     background-color: darkred;
     border: 1px solid black
+}
+
+.solar > div:nth-child(1) {
+    border-radius: 5px 0 0 0;
+}
+
+.solar > div:nth-child(4) {
+    border-radius: 0 5px 0 0;
+}
+
+.solar > div:nth-child(5) {
+    border-radius: 0 0 0 5px;
+}
+
+.solar > div:nth-child(8) {
+    border-radius: 0 0 5px 0;
 }
 
 .help, .instructions-header .close-button {
@@ -256,6 +273,13 @@ button.clicked {
     font-weight: bold;
 }
 
+
+@media (max-width: 1000px) {
+    #instructions {
+        width: 80%;
+    }
+}
+
 @media (max-width: 600px) {
     #calculator-app {
         transform: scale(0.8);
@@ -263,5 +287,9 @@ button.clicked {
 
     html {
         font-size: 12px;
+    }
+
+    #instructions {
+        width: 100%;
     }
 }
