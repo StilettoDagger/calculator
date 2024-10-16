@@ -20,7 +20,7 @@ body {
     align-items: center;
 }
 
-.calc-body, .calc-screen, li {
+.calc-body, .calc-screen, button {
     border-radius: 10px;
 }
 
@@ -46,10 +46,11 @@ body {
     box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-.calc-buttons {
+.calc-buttons, .clear-buttons {
     display: flex;
     color: gold;
     text-align: center;
+    align-items: center;
     font-size: 3rem;
     font-weight: bold;
     margin-bottom: 2em;
@@ -57,7 +58,11 @@ body {
     gap: 1em;
 }
 
-.num-buttons, .operator-buttons {
+.clear-buttons {
+    width: 80%;
+}
+
+ul {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -74,15 +79,35 @@ body {
     flex-direction: column;
 }
 
-.num-buttons > li, .operator-buttons > li {
+.clear-buttons {
+    margin: 0;
+    color: black;
+    font-size: 2rem;
+}
+
+.clear-buttons ul {
+    justify-content: space-between;
+    width: 100%;
+}
+
+.num-buttons button, .operator-buttons button, .clear-buttons button {
     width: 90px;
     height: 60px;
-    background-color: rgb(164, 164, 164);
+    color: #eee;
+    background-color: rgb(119, 119, 119);
     display: flex;
     justify-content: center;
     align-items: center;
     border: 2px solid rgb(92, 92, 92);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.509);
+    text-transform: uppercase;
+    cursor: pointer;
+    font: inherit;
+}
+
+.clear-buttons button {
+    color: black;
+    background-color: rgb(253, 192, 79);
 }
 
 .cursor {
@@ -94,7 +119,7 @@ body {
     width: 11px;
     height: 53px;
     gap: 1px;
-    order: 1
+    order: 1;
 }
 
 .pixel {
