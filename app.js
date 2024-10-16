@@ -170,36 +170,46 @@ window.addEventListener("mouseup", e => {
     }
 })
 
-// Add tutorial overlay functionality
+// Event listener for when the document contents are fully loaded.
+document.addEventListener("DOMContentLoaded", e => {
+    
+    // Add tutorial overlay functionality
+    const helpButton = document.querySelector(".help");
+    
+    const overlay = document.querySelector("#overlay");
+    
+    const instructions = document.querySelector("#instructions");
+    
+    const closeInstructionsButton = instructions.querySelector(".instructions-header .close-button");
+    
+    overlay.addEventListener("transitionend", e => {
+    
+        if (e.target.classList.contains("show")) instructions.classList.toggle("show");
+    
+    })
+    
+    overlay.addEventListener("click", e => {
+        instructions.classList.toggle("show");
+    })
+    
+    helpButton.addEventListener("click", e => {
+        overlay.classList.toggle("show");
+    })
+    
+    closeInstructionsButton.addEventListener("click", e => {
+        instructions.classList.toggle("show");
+    })
+    
+    instructions.addEventListener("transitionend", e => {
+        if (!e.target.classList.contains("show")) overlay.classList.toggle("show");
+    });
 
-const helpButton = document.querySelector(".help");
+    setTimeout(() => {
+        overlay.classList.toggle("show");
+    }, 500);
 
-const overlay = document.querySelector("#overlay");
-
-const instructions = document.querySelector("#instructions");
-
-const closeInstructionsButton = instructions.querySelector(".instructions-header .close-button");
-
-overlay.addEventListener("transitionend", e => {
-
-    if (e.target.classList.contains("show")) instructions.classList.toggle("show");
-
-})
-
-helpButton.addEventListener("click", e => {
-    overlay.classList.toggle("show");
-})
-
-closeInstructionsButton.addEventListener("click", e => {
-    instructions.classList.toggle("show");
-})
-
-instructions.addEventListener("transitionend", e => {
-    if (!e.target.classList.contains("show")) overlay.classList.toggle("show");
-})
-
-// Draw and animate the cursor
-
-cursor.drawCursor();
-
-cursor.blinkCursor(500);
+    // Draw and animate the cursor
+    cursor.drawCursor();
+    
+    cursor.blinkCursor(500);
+});
