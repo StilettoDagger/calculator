@@ -39,10 +39,10 @@ const calculator = {
 		let pattern;
 		switch (type) {
 			case "multDiv":
-				pattern = /(\d+\.?\d*)([\*\/])(\d+\.?\d*)/;
+				pattern = /(\-?\d+\.?\d*)([\*\/])(\-?\d+\.?\d*)/;
 				break;
 			case "addSub":
-				pattern = /(\d+\.?\d*)([\+\-])(\d+\.?\d*)/;
+				pattern = /(\-?\d+\.?\d*)([\+\-])(\-?\d+\.?\d*)/;
 				break;
 			default:
 				return;
@@ -70,6 +70,7 @@ const calculator = {
 		// Store the final result.
 
 		this.result = this.expression;
+        this.numInput = this.expression;
 	},
 };
 
@@ -118,12 +119,18 @@ window.addEventListener("keydown", (e) => {
 
 	if (keyPressed === "Enter" || keyPressed === "=") {
 		calculator.evaluateAllExpressions();
-		calculator.numInput = "";
 		queryInput.textContent = calculator.result;
 	}
 
 	if (regex.test(keyPressed)) {
+
+        if (keyPressed === "." && calculator.numInput.includes("."))
+        {
+            return;
+        }
+
 		calculator.expression += keyPressed;
+        
 
 		if (OPERATORS.includes(keyPressed)) {
 			calculator.numInput = "";
