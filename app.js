@@ -124,7 +124,6 @@ function handleKeyPress(e) {
 			0,
 			queryInput.textContent.length - 1
 		);
-		console.table(calculator);
 	}
 
 	if (keyPressed === "Enter" || keyPressed === "=") {
@@ -146,7 +145,6 @@ function handleKeyPress(e) {
 		}
 
 		queryInput.textContent += keyPressed;
-		console.table(calculator);
 	}
 }
 
