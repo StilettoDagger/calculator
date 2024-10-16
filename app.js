@@ -70,7 +70,7 @@ const calculator = {
 		// Store the final result.
 
 		this.result = this.expression;
-        this.numInput = this.expression;
+		this.numInput = this.expression;
 	},
 };
 
@@ -95,11 +95,14 @@ const cursor = {
 window.addEventListener("keydown", (e) => {
 	const queryInput = document.querySelector(".query");
 
-	const regex = /[0-9\+\-\*\/\.]/;
-
-	e.preventDefault();
+	const regex = /^[0-9\+\-\*\/\.]$/;
 
 	const keyPressed = e.key;
+
+    // Disable overrides for F keys.
+	if (!/^F[0-9]+$/.test(keyPressed)) {
+		e.preventDefault();
+	}
 
 	if (keyPressed === "Backspace" && calculator.expression) {
 		calculator.expression = calculator.expression.slice(
@@ -123,22 +126,17 @@ window.addEventListener("keydown", (e) => {
 	}
 
 	if (regex.test(keyPressed)) {
-
-        if (keyPressed === "." && calculator.numInput.includes("."))
-        {
-            return;
-        }
+		if (keyPressed === "." && calculator.numInput.includes(".")) {
+			return;
+		}
 
 		calculator.expression += keyPressed;
-        
 
 		if (OPERATORS.includes(keyPressed)) {
 			calculator.numInput = "";
+		} else {
+			calculator.numInput += keyPressed;
 		}
-
-        else {
-            calculator.numInput += keyPressed;
-        }
 
 		queryInput.textContent += keyPressed;
 		console.table(calculator);
