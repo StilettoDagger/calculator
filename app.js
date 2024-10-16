@@ -157,8 +157,20 @@ window.addEventListener("keydown", handleKeyPress);
 const buttons = document.querySelectorAll("button");
 
 for (const button of buttons) {
-    button.addEventListener("click", handleKeyPress)
+    button.addEventListener("click", handleKeyPress);
+    button.addEventListener("mousedown", e => {
+        e.target.classList.add("clicked");
+    });
+    button.addEventListener("mouseup", e => {
+        e.target.classList.remove("clicked")
+    })
 }
+
+window.addEventListener("mouseup", e => {
+    for (const button of buttons) {
+        button.classList.remove("clicked");
+    }
+})
 
 cursor.drawCursor();
 
