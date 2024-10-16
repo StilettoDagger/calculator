@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Jersey+10&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -9,7 +11,7 @@ html, body {
 }
 
 body {
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Roboto Mono', 'Courier New', Courier, monospace;
     background-color: #eee
 }
 
@@ -266,11 +268,11 @@ button.clicked {
 }
 
 .query {
-    font-size: 3rem;
+    font-size: 3.5rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    font-weight: bold;
+    font-family: 'Jersey 10', sans-serif;
 }
 
 
