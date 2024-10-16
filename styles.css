@@ -99,7 +99,18 @@ body {
 
 #instructions, #overlay {
     opacity: 0;
-    display: none;
+    visibility: hidden;
+    transition: opacity 0.5s;
+}
+
+#instructions.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+#overlay.show {
+    visibility: visible;
+    opacity: 0.5;
 }
 
 #instructions ul {
