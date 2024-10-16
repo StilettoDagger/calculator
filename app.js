@@ -104,7 +104,14 @@ function handleKeyPress(e) {
 		e.preventDefault();
 	}
 
-	if (keyPressed === "Backspace" && calculator.expression) {
+    if (keyPressed === "Escape" || keyPressed === "clear")
+    {
+        calculator.expression = "";
+        calculator.numInput = "";
+        queryInput.textContent = "";
+    }
+
+	if ((keyPressed === "Backspace" || keyPressed === "delete") && calculator.expression) {
 		calculator.expression = calculator.expression.slice(
 			0,
 			calculator.expression.length - 1
