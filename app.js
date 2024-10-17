@@ -35,7 +35,7 @@ const calculator = {
 	},
 	// Evaluate all expressions of a certain type
 	evalExpression(type, expression) {
-		const bracketPattern = /\((.+?)\)/;
+		const bracketPattern = /\(([^()]*)\)/;
 
 		// Check and evaluate bracket expression
 		while (bracketPattern.test(expression))
