@@ -97,6 +97,7 @@ const calculator = {
 
 const cursor = {
 	element: document.querySelector(".cursor"),
+	blinkId: undefined,
 	drawCursor() {
 		for (let i = 0; i < 10; i++) {
 			const pixel = document.createElement("div");
@@ -105,10 +106,14 @@ const cursor = {
 		}
 	},
 	blinkCursor(delay) {
-		setInterval(() => {
+		this.blinkId = setInterval(() => {
 			this.element.classList.toggle("off");
 		}, delay);
 	},
+	pauseBlinking() {
+		clearInterval(this.blinkId);
+		this.element.classList.add("off");
+	}
 };
 
 function handleKeyPress(e) {
@@ -150,11 +155,13 @@ function handleKeyPress(e) {
 		{
 			queryInput.textContent = "How dare you divide by zero...";
 			queryInput.classList.add("error");
+			cursor.pauseBlinking();
 
 			setTimeout(() => {
 				calculator.clearCalculator();
 				queryInput.textContent = "";
 				queryInput.classList.remove("error");
+				cursor.blinkCursor(500);
 			}, 2000);
 		}
 		else {
