@@ -241,8 +241,17 @@ ul {
     transition: filter 0.1s;
 }
 
+.operator-buttons button {
+    color: lightcoral;
+}
+
 .num-buttons button[value="("], .num-buttons button[value=")"] {
     font-size: 0.8em;
+    background-color: #a4a4a4;
+}
+
+.num-buttons button[value="="] {
+    background-color:crimson
 }
 
 .clear-buttons button {
