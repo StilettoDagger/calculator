@@ -56,7 +56,7 @@ const calculator = {
 			this.expression = this.expression.replace(pattern, expResult);
 		}
 	},
-	evaluateAllExpressions() {
+	calculate() {
 		// Evaluate the entire expression.
 
 		// First evaluate all multiplication and division expressions
@@ -127,7 +127,7 @@ function handleKeyPress(e) {
 	}
 
 	if (keyPressed === "Enter" || keyPressed === "=") {
-		calculator.evaluateAllExpressions();
+		calculator.calculate();
 		queryInput.textContent = calculator.result;
 	}
 
