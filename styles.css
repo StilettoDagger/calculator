@@ -297,6 +297,11 @@ button.clicked {
     font-family: 'Jersey 10', sans-serif;
 }
 
+.query.error {
+    color: darkred;
+    font-size: 2rem;
+}
+
 
 @media (max-width: 1000px) {
     #instructions {

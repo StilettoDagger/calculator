@@ -87,6 +87,10 @@ const calculator = {
 		this.result = this.expression;
 		this.numInput = this.expression;
 	},
+	clearCalculator() {
+		this.expression = "";
+		this.numInput = "";
+	}
 };
 
 // Create a cursor object with methods to render the cursor
@@ -121,8 +125,7 @@ function handleKeyPress(e) {
 
     if (keyPressed === "Escape" || keyPressed === "clear")
     {
-        calculator.expression = "";
-        calculator.numInput = "";
+        calculator.clearCalculator();
         queryInput.textContent = "";
     }
 
@@ -143,7 +146,20 @@ function handleKeyPress(e) {
 
 	if (keyPressed === "Enter" || keyPressed === "=") {
 		calculator.calculate();
-		queryInput.textContent = calculator.result;
+		if (calculator.result.includes("Infinity"))
+		{
+			queryInput.textContent = "How dare you divide by zero...";
+			queryInput.classList.add("error");
+
+			setTimeout(() => {
+				calculator.clearCalculator();
+				queryInput.textContent = "";
+				queryInput.classList.remove("error");
+			}, 2000);
+		}
+		else {
+			queryInput.textContent = calculator.result;
+		}
 	}
 
 	if (regex.test(keyPressed)) {
