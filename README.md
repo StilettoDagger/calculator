@@ -2,6 +2,8 @@
 
 This is a simple calculator web app built using HTML, CSS, and JavaScript. It is the final project of the foundation course on [The Odin Project](https://www.theodinproject.com/).
 
+You can view the app [here](https://stilettodagger.github.io/calculator/)
+
 ## Features
 
 + Allows the user to evaluate expressions with the following operations:
