@@ -33,9 +33,21 @@ const calculator = {
 				return firstNum;
 		}
 	},
-	evalExpression(
-		type // Evaluate all expressions of a certain type
-	) {
+	// Evaluate all expressions of a certain type
+	evalExpression(type, expression) {
+		const bracketPattern = /\((.+)\)/;
+
+		// Check and evaluate bracket expression
+		if (bracketPattern.test(expression))
+		{
+			let bracketExp = expression.match(bracketPattern)[1];
+
+			bracketExp = this.evalExpression("multDiv", bracketExp);
+			bracketExp = this.evalExpression("addSub", bracketExp);
+
+			expression = expression.replace(bracketPattern, bracketExp);
+		}
+		
 		let pattern;
 		switch (type) {
 			case "multDiv":
@@ -48,24 +60,27 @@ const calculator = {
 				return;
 		}
 
-		while (pattern.test(this.expression)) {
-			const match = this.expression.match(pattern); // This returns an array where the first number, operator, and second number are on the indices 1, 2, and 3 respectively
+
+		while (pattern.test(expression)) {
+			const match = expression.match(pattern); // This returns an array where the first number, operator, and second number are on the indices 1, 2, and 3 respectively
 
 			const expResult = this.operate(+match[1], +match[3], match[2]);
 
-			this.expression = this.expression.replace(pattern, expResult);
+			expression = expression.replace(pattern, expResult);
 		}
+
+		return expression;
 	},
 	calculate() {
 		// Evaluate the entire expression.
 
 		// First evaluate all multiplication and division expressions
 
-		this.evalExpression("multDiv");
+		this.expression = this.evalExpression("multDiv", this.expression);
 
 		// Then evaluate all addition and subtraction expressions
 
-		this.evalExpression("addSub");
+		this.expression = this.evalExpression("addSub", this.expression);
 
 		// Store the final result.
 
@@ -95,7 +110,7 @@ const cursor = {
 function handleKeyPress(e) {
     const queryInput = document.querySelector(".query");
 
-	const regex = /^[0-9\+\-\*\/\.]$/;
+	const regex = /^[0-9\+\-\*\/\.\(\)]$/;
 
 	const keyPressed = e.type === "keydown" ? e.key : e.target.value;
     
