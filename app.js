@@ -35,10 +35,10 @@ const calculator = {
 	},
 	// Evaluate all expressions of a certain type
 	evalExpression(type, expression) {
-		const bracketPattern = /\((.+)\)/;
+		const bracketPattern = /\((.+?)\)/;
 
 		// Check and evaluate bracket expression
-		if (bracketPattern.test(expression))
+		while (bracketPattern.test(expression))
 		{
 			let bracketExp = expression.match(bracketPattern)[1];
 
